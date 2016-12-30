@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="import" href="../head.html?__inline">
+    <title>往日精彩</title>
+</head>
+<style>
+    .swiper-slide {
+        overflow: auto !important;
+        height: auto !important;
+    }
+</style>
+
+<body>
+    <div class="wp100  nav-box tc lh70 bb p-r"><i id="back" class="return"></i>往日精彩</div>
+    <div class="swiper-container" id="swiperInner" style="width: 100%;">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="height: auto;">
+                <div class="loading hidden top-load"></div>
+                <div id="cont">
+                    <div class="loading"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="import" href="../footer.html?__inline">
+    <script data-loader>
+        require(['app/controller/WonderfulDetail']);
+    </script>
+</body>
+
+</html>

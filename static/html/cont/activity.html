@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="import" href="../head.html?__inline">
+    <title>精选活动</title>
+    <style>
+        .carefully {
+            display: none;
+        }
+        
+        .active .carefully {
+            display: block;
+        }
+        
+        .nav-box {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+        
+        .nav-box li {
+            width: 50% !important;
+            height: 100% !important;
+            border-radius: 0 !important;
+            background: transparent !important;
+            opacity: 1 !important;
+            margin: 0 !important;
+        }
+        
+        #leftWrap,
+        #rightWrap {
+            position: relative;
+            top: 80px;
+        }
+        
+        #rightWrap {
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="wp100 bg_fff nav-box bb tc clearfix" id="pagination">
+        <li class="fl wp50 height">
+            <div class="inline_block  height care">精选活动<i class="carefully"></i></div>
+        </li>
+        <li class="fl wp50 height">
+            <div class="inline_block  height care">往日精彩<i class="carefully"></i></div>
+        </li>
+    </ul>
+    <div id="leftWrap">
+        <input type="hidden" id="leftCode" />
+        <div id="leftCont"></div>
+        <div style="height: 100px;"></div>
+        <div id="applyBtn" class="fixft foot">我要预定</div>
+    </div>
+    <div id="rightWrap">
+        <ul id="rightCont"></ul>
+    </div>
+    <link rel="import" href="../footer.html?__inline">
+    <script>
+        require(['app/controller/Activity']);
+    </script>
+</body>
+
+</html>
