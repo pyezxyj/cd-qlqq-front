@@ -6,17 +6,36 @@ define([
 ], function(base, Ajax, Validate, addSub) {
 
     var code = base.getUrlParam("code");
-    var title = "";
 
     init();
 
     function init() {
         if (code) {
             getCont();
+            getActTip();
+            base.getUser()
+                .then(function(res) {
+                    if (res.success) {
+                        res.data.idNo && $("#idNo").val(res.data.idNo);
+                        res.data.realName && $("#realName").val(res.data.realName);
+                        res.data.mobile && $("#mobile").val(res.data.mobile);
+                    }
+                });
             addListener();
         } else {
+            $("#loading").hide();
             base.showMsg("未传入活动编号");
         }
+    }
+
+    function getActTip() {
+        Ajax.get("616913", {
+            "ckey": "actTip"
+        }).then(function(res) {
+            if (res.success) {
+                $("#actTip").html(res.data.cvalue);
+            }
+        });
     }
 
     function addListener() {
@@ -24,28 +43,23 @@ define([
             'rules': {
                 realName: {
                     required: true,
-                    isNotFace: true,
-                    // required: false
+                    isNotFace: true
                 },
                 idNo: {
                     required: true,
-                    isIdCardNo: true,
-                    // required: false
+                    isIdCardNo: true
                 },
                 mobile: {
                     required: true,
-                    mobile: true,
-                    // required: false
+                    mobile: true
                 },
                 bookNum: {
                     required: true,
-                    "Z+": true,
-                    // required: false
+                    "Z+": true
                 },
                 hotelName: {
                     required: false,
-                    isNotFace: true,
-                    // required: false
+                    isNotFace: true
                 }
             }
         });
@@ -96,17 +110,11 @@ define([
                 if (res.success) {
                     $("#productCode").val(res.data.code);
                     $("#fee").val(res.data.fee);
+                    $("#bookNum").val("1").trigger("change");
                 } else {
                     base.showMsg("订单信息获取失败");
                 }
             });
-        if (base.isLogin()) {
-            Ajax.post("616222", {
-                json: {
-                    newsCode: code
-                }
-            });
-        }
     }
 
     function applyOrder(userId) {
@@ -143,7 +151,6 @@ define([
     var response = {};
 
     function onBridgeReady() {
-        base.showMsg("appId=" + response.data.appId);
         WeixinJSBridge.invoke(
             'getBrandWCPayRequest', {
                 "appId": response.data.appId, //公众号名称，由商户传入     
@@ -155,9 +162,7 @@ define([
             },
             function(res) {
                 $("#loading").hide();
-                base.showMsg(res.err_msg);
                 if (res.err_msg == "get_brand_wcpay_request:ok") { // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
-
                     base.showMsg("支付成功");
                     setTimeout(function() {
                         location.href = "../cont/activity.html";
@@ -171,18 +176,22 @@ define([
 
     function wxPay(response1) {
         response = response1;
-        if (typeof WeixinJSBridge == "undefined") {
-            if (document.addEventListener) {
-                document.removeEventListener("WeixinJSBridgeReady", onBridgeReady);
-                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-            } else if (document.attachEvent) {
-                document.detachEvent('WeixinJSBridgeReady', onBridgeReady);
-                document.detachEvent('onWeixinJSBridgeReady', onBridgeReady);
-                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
-                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        if (response.data && response.data.signType) {
+            if (typeof WeixinJSBridge == "undefined") {
+                if (document.addEventListener) {
+                    document.removeEventListener("WeixinJSBridgeReady", onBridgeReady);
+                    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                } else if (document.attachEvent) {
+                    document.detachEvent('WeixinJSBridgeReady', onBridgeReady);
+                    document.detachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                    document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                    document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                }
+            } else {
+                onBridgeReady();
             }
         } else {
-            onBridgeReady();
+            base.showMsg("微信支付失败");
         }
     }
 });

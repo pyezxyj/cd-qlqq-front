@@ -16,6 +16,13 @@ define([
         });
         swiperInner();
         addListener();
+        if (base.isLogin()) {
+            Ajax.post("616222", {
+                json: {
+                    newsCode: code
+                }
+            });
+        }
     }
 
     function swiperInner() {
@@ -37,7 +44,7 @@ define([
 
     function addListener() {
         $("#back").on("click", function() {
-            window.history.back();
+            location.href = "./activity.html?idx=1";
         });
     }
 

@@ -25,7 +25,6 @@ define([
     init();
 
     function init() {
-        //$("#rightWrap").height(contHeight);
         addListener();
         $("#pagination").find("li:eq(" + activeIdx + ")").click();
     }
@@ -62,9 +61,24 @@ define([
                 if (base.isLogin()) {
                     location.href = "../pay/apply.html?code=" + code;
                 } else {
-                    var appid = APPID;
-                    var redirect_uri = base.getDomain() + "/cont/redirect.html?c=" + code;
-                    location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=" + redirect_uri + "&response_type=code&scope=snsapi_userinfo#wechat_redirect";
+                    $("#loading").removeClass('hidden');
+                    Ajax.get("806031", {
+                            companyCode: SYSTEM_CODE,
+                            account: "ACCESS_KEY"
+                        })
+                        .then(function(res) {
+                            if (res.success && res.data.length) {
+                                var appid = res.data[0].password;
+                                var redirect_uri = base.getDomain() + "/cont/redirect.html?c=" + code;
+                                location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=" + redirect_uri + "&response_type=code&scope=snsapi_userinfo#wechat_redirect";
+                            } else {
+                                $("#loading").addClass("hidden");
+                                base.showMsg("非常抱歉，微信登录失败");
+                            }
+                        }, function() {
+                            $("#loading").addClass("hidden");
+                            base.showMsg("非常抱歉，微信登录失败");
+                        });
                 }
             }
         });

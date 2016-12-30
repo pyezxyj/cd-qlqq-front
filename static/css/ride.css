@@ -34,7 +34,7 @@
 }
 
 .p-word {
-    font-size: 24px;
+    font-size: 26px;
     padding: 16px 30px 0 30px;
     word-wrap: break-word;
     line-height: 34px;
@@ -64,7 +64,7 @@
 }
 
 .heading {
-    font-size: 24px;
+    font-size: 26px;
     color: #ffffff;
     line-height: 28px;
     word-wrap: break-word;
@@ -156,7 +156,7 @@
 }
 
 .annotate {
-    font-size: 18px;
+    font-size: 20px;
     color: #565656;
     line-height: 64px;
 }
@@ -182,7 +182,7 @@
 }
 
 .explain {
-    font-size: 20px;
+    font-size: 22px;
     color: #565656;
     line-height: 28px;
 }

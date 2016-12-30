@@ -3,7 +3,7 @@
 
 <head>
     <link rel="import" href="../head.html?__inline">
-    <title>精选活动</title>
+    <title>活动预定</title>
 </head>
 
 <body>
@@ -19,18 +19,18 @@
         </div>
         <div class="wp100 pl30  fs28  means  lh92 mt2 p-r">
             <div class="inline_block  name-width p-a">身份证号</div>
-            <input type="text" name="idNo" id="idNo" class="fs28 b-ground wp100 pl172">
+            <input type="number" name="idNo" id="idNo" class="fs28 b-ground wp100 pl172">
         </div>
         <div class="wp100 pl30 annotate">*请填写真实信息，方便平台帮您购买保险！</div>
         <div class="wp100 pl30  fs28  means  lh92 mt2 p-r">
             <div class="inline_block name-width p-a">手机号</div>
-            <input type="text" id="mobile" name="mobile" class="fs28 b-ground wp100 pl172">
+            <input type="tel" id="mobile" name="mobile" class="fs28 b-ground wp100 pl172">
         </div>
         <div class="wp100 pl30 fs28 lh92 mt2 p-r">
             <div class="inline_block name-width p-a">预定数量</div>
             <div class="inline_block wp100 pl172">
                 <div class="inline_block w50p" id="subCount"><img src="images/_@2x.png" class="va"></div>
-                <input type="text" id="bookNum" name="bookNum" class="fs28 b-ground number tc">
+                <input type="number" id="bookNum" name="bookNum" class="fs28 b-ground number tc">
                 <div class="inline_block w80p tc" id="addCount"><img src="images/+@2x.png" class="va"></div>
             </div>
         </div>
@@ -39,7 +39,7 @@
             <div class="wp100">
                 <input type="hidden" id="fee" name="fee" />
                 <div class="fs28 b-ground inline_block pl172" id="count1"></div>
-                <div class="inline_block price" id="count2"></div>
+                <div class="inline_block price" style="float: right;margin-right: 130px;" id="count2"></div>
             </div>
         </div>
         <div class="wp100 pl30 annotate">*请填写真实手机号，方便平台与您联系，预定数量将确定订单价格。</div>
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="wp100 pl30 fs28 sign">预定说明</div>
-        <div class="explain pl30">1.订单提交，需支付后，报名才生效；</br>2.如需要退订，请联系骑来骑去客服电话：13588766234；</br>3.订单支付后，您将收到一条提示短信，告知相关事项。</div>
+        <div class="explain pl30" id="actTip"></div>
         <div class="fixft">
             <input type="button" id="applyBtn" value="支付订单" class="pay tc wp100">
         </div>
