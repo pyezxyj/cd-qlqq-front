@@ -219,3 +219,7 @@
     z-index: 999;
     background-position: 50% 42%;
 }
+
+.ui-dialog-content {
+    font-size: 30px !important;
+}

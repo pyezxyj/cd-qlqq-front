@@ -16,13 +16,11 @@ define([
         });
         swiperInner();
         addListener();
-        if (base.isLogin()) {
-            Ajax.post("616222", {
-                json: {
-                    newsCode: code
-                }
-            });
-        }
+        code && Ajax.post("616222", {
+            json: {
+                newsCode: code
+            }
+        });
     }
 
     function swiperInner() {
@@ -37,7 +35,7 @@ define([
                 }
             },
             onInit: function() {
-                code ? getCont() : (base.show("为传入内容编号"), doError("#cont"));
+                code ? getCont() : (base.showMsg("未传入内容编号"), doError("#cont"));
             }
         });
     }

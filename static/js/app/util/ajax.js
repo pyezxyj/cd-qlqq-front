@@ -62,8 +62,8 @@ define(["jquery"], function($) {
             return cache[cache_url].then(function(res) {
                 if (res.errorCode == "4") {
                     clearSessionUser();
-                    //location.href = "../user/login.html?return=" + encodeURIComponent(location.pathname + location.search);
-                    base.showMsg("登录超时");
+                    // location.href = "../user/login.html?return=" + encodeURIComponent(location.pathname + location.search);
+                    // base.showMsg("登录超时");
                 }
                 var result = {};
                 res.errorCode == "0" ? (result.success = true, result.data = res.data) :
