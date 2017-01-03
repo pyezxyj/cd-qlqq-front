@@ -1,8 +1,7 @@
 define([
     'app/controller/base',
     'app/util/ajax'
-], function(base, Ajax, Swiper) {
-    var wrapSwiper, rightSwiper, leftSwiper;
+], function(base, Ajax) {
     var config = {
         leftConfig: {
             start: 1,
@@ -12,7 +11,7 @@ define([
         },
         rightConfig: {
             start: 1,
-            limit: 4,
+            limit: 10,
             status: 1,
             first: true,
             type: 4

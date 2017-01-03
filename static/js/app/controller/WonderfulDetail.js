@@ -87,13 +87,6 @@ define([
                     !refresh && doError("#cont");
                 }
             });
-        if (base.isLogin()) {
-            Ajax.post("616222", {
-                json: {
-                    newsCode: code
-                }
-            });
-        }
     }
 
     function doError(id) {
