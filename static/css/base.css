@@ -201,6 +201,11 @@ img {
 html,
 body {
     margin: 0px;
+    overflow-y: auto;
+    height: 100%;
+}
+
+html {
     height: 100%;
 }
 

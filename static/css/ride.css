@@ -204,7 +204,7 @@
 .loading {
     background: url(../images/loading.gif?__inline) center no-repeat;
     width: 100%;
-    height: 100px;
+    height: 50px;
 }
 
 .w25p {

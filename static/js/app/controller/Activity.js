@@ -87,7 +87,7 @@ define([
                 location.href = "./cont/wonderful-detail.html?code=" + code;
             }
         });
-        $(window).on("scroll", function() {
+        $("body").on("scroll", function() {
             if (canScrolling && !isEnd && ($(document).height() - $(window).height() - 40 <= $(document).scrollTop())) {
                 canScrolling = false;
                 addLoading();
@@ -102,6 +102,7 @@ define([
             .then(function(res) {
                 $("#leftCont").find(".loading").remove();
                 if (res.success && res.data.list.length) {
+                    $("#applyBtn").show();
                     refresh && $("#leftCont").empty();
                     addLeftCont(res.data.list[0]);
                 } else {
@@ -160,6 +161,8 @@ define([
 
     function doLeftError(id) {
         $(id).html('<div class="tc bg_fff" style="line-height: 75px;font-size: 15px;color: #888;">暂无相关活动</div>');
+        $("#leftCode").val("");
+        $("#applyBtn").hide();
     }
 
     function doRightError(id) {
