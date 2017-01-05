@@ -16,7 +16,7 @@ define([
             first: true,
             type: 4
         }
-    }
+    };
     var isEnd, canScrolling;
     var activeIdx = base.getUrlParam("idx") || 0;
 
@@ -113,8 +113,8 @@ define([
 
     function addLeftCont(data) {
         data.pic1 = data.pic1.split(/\|\|/)[0];
-        var html = '<img class="plr16  pt20 wp100" src="' + data.pic1 + '">' +
-            '<div class="fs30 plr30 ptb15 news-head">' + data.title + '</div>' +
+        var html = '<img class="plr8  pt10 wp100" src="' + data.pic1 + '">' +
+            '<div class="fs15 plr15 ptb7_5 news-head">' + data.title + '</div>' +
             '<div class="p-word">' + data.description + '</div>';
 
         $("#leftCont").html(html);
@@ -147,51 +147,23 @@ define([
     function addRightCont(data) {
         for (var i = 0, html = ""; i < data.length; i++) {
             data[i].pic = data[i].pic.split(/\|\|/)[0];
-            html += '<li data-code="' + data[i].code + '" class="p-r mb20 mt20 hp327 over-hide">' +
-                '<img class="plr16 wp100 center-img" src="' + data[i].pic + '">' +
-                '<div class="wp100 pr52 pos">' +
+            html += '<li data-code="' + data[i].code + '" class="p-r mtb10 hp163_5 over-hide">' +
+                '<img class="plr8 wp100 center-img" src="' + data[i].pic + '">' +
+                '<div class="wp100 pr26 pos">' +
                 '<div class="heading">' + data[i].title + '</div>' +
                 '</div>' +
                 '</li>';
         }
 
-        var center = $(html);
-        var imgs = center.find("img");
-        for (var i = 0; i < imgs.length; i++) {
-            var img = imgs.eq(i);
-            if (img[0].complete) {
-                var width = img[0].width,
-                    height = img[0].height;
-                if (width > height) {
-                    img.addClass("hp100");
-                } else {
-                    img.addClass("wp100");
-                }
-                continue;
-            }
-            (function(img) {
-                img[0].onload = (function() {
-                    var width = this.width,
-                        height = this.height;
-                    if (width > height) {
-                        img.addClass("hp100");
-                    } else {
-                        img.addClass("wp100");
-                    }
-                });
-            })(img);
-        }
-
-
-        $("#rightCont").append(center);
+        $("#rightCont").append(html);
     }
 
     function doLeftError(id) {
-        $(id).html('<div class="tc bg_fff" style="line-height: 150px;font-size: 30px;color: #888;">暂无相关活动</div>');
+        $(id).html('<div class="tc bg_fff" style="line-height: 75px;font-size: 15px;color: #888;">暂无相关活动</div>');
     }
 
     function doRightError(id) {
-        $(id).html('<li class="tc bg_fff" style="line-height: 150px;font-size: 30px;color: #888;">暂无往日精彩</li>');
+        $(id).html('<li class="tc bg_fff" style="line-height: 75px;font-size: 15px;color: #888;">暂无往日精彩</li>');
     }
 
     function addLoading() {

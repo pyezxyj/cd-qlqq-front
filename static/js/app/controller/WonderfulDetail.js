@@ -10,7 +10,7 @@ define([
     init();
 
     function init() {
-        var contHeight = $(window).height() - 80;
+        var contHeight = $(window).height() - 40;
         $("#swiperInner").css({
             "height": contHeight + "px"
         });
@@ -28,7 +28,7 @@ define([
             direction: 'vertical',
             slidesPerView: 'auto',
             freeMode: true,
-            onTouchEnd: function(swiper, event) {
+            onTouchEnd: function(swiper) {
                 if (swiper.translate > 40) { //判断下拉刷新
                     $('.top-load', $("#swiperInner")).removeClass('hidden');
                     getCont(true);
@@ -53,13 +53,10 @@ define([
                 if (res.success) {
                     res.data.pic = res.data.pic.split(/\|\|/)[0];
                     var date = new Date(res.data.updateDatetime || res.data.publishDatetime).format("yyyy.MM.dd");
-                    var html = '<div class="fs30 plr30 ptb15 news-head">' + res.data.title + '</div>' +
-                        '<div class="time wp100 plr30 pt6">' +
+                    var html = '<div class="fs15 plr15 ptb7_5 news-head">' + res.data.title + '</div>' +
+                        '<div class="time wp100 plr15 pt3">' +
                         '<div class=" inline_block">' + date + '</div>' +
-                        '<div class="inline_block eye pl46 ml40">(' + res.data.scanNum + ')</div>' +
-                        '</div>' +
-                        '<div class="p-r pt20">' +
-                        '<img class="plr16 wp100" src="' + res.data.pic + '">' +
+                        '<div class="inline_block eye pl23 ml20">(' + res.data.scanNum + ')</div>' +
                         '</div>' +
                         '<div class="p-word">' + res.data.content + '</div>';
 
@@ -90,6 +87,6 @@ define([
     }
 
     function doError(id) {
-        $(id).html('<div class="tc bg_fff" style="line-height: 150px;font-size: 30px;color: #888;">暂时无法获取内容</div>');
+        $(id).html('<div class="tc bg_fff" style="line-height: 75px;font-size: 15px;color: #888;">暂时无法获取内容</div>');
     }
 });

@@ -105,7 +105,7 @@ section {
 }
 
 body {
-    font-size: 22px;
+    font-size: 11px;
     position: relative;
     font-family: Microsoft YaHei, '宋体', Tahoma, Arial, sans-serif;
     color: #000000;
@@ -453,6 +453,10 @@ textarea {
     padding-top: 15px;
     padding-bottom: 15px;
 }
+.ptb7_5 {
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+}
 
 .p20 {
     padding: 20px;
@@ -526,8 +530,8 @@ textarea {
     padding-right: 30px;
 }
 
-.pt30 {
-    padding-top: 30px;
+pl23{
+    padding-left: 23px;
 }
 
 .pb30 {
@@ -610,6 +614,9 @@ textarea {
 
 .mt2 {
     margin-top: 2px;
+}
+.mt1 {
+    margin-top: 1px;
 }
 
 .mt4 {
