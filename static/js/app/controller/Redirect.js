@@ -9,7 +9,7 @@ define([
         var code = base.getUrlParam("code");
         wxLogin({
             code: code,
-            companyCode: SYSTEM_CODE,
+            companyCode: SYSTEM_CODE
         });
     }
 

@@ -49,7 +49,6 @@
     line-height: 88px;
 }
 
-
 /*往日精彩*/
 
 .p-r {
@@ -58,13 +57,12 @@
 
 .pos {
     position: absolute;
-    padding-left: 52px;
-    ;
+    padding-left: 52px;;
     bottom: 28px;
 }
 
 .heading {
-    font-size: 26px;
+    font-size: 28px;
     color: #ffffff;
     line-height: 28px;
     word-wrap: break-word;
@@ -74,7 +72,6 @@
 .pr52 {
     padding-right: 52px;
 }
-
 
 /*往日精彩详情*/
 
@@ -116,7 +113,6 @@
 .pl46 {
     padding-left: 46px;
 }
-
 
 /*活动预定*/
 
@@ -182,9 +178,9 @@
 }
 
 .explain {
-    font-size: 22px;
+    font-size: 28px;
     color: #565656;
-    line-height: 28px;
+    line-height: 30px;
 }
 
 .pay {
@@ -222,4 +218,38 @@
 
 .ui-dialog-content {
     font-size: 30px !important;
+}
+
+label.error {
+    color: #ff9922;
+    position: absolute;
+    white-space: nowrap;
+    right: 10px;
+    top: 0;
+}
+.center-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+}
+
+.center-img {
+    max-width: none !important;
+    max-height: none !important;
+}
+
+.hp327{
+    height: 327px;
+}
+
+.over-hide{
+    overflow: hidden;
+}
+html, body{
+    width: 100%;
+    overflow-x: hidden;
 }

@@ -23,12 +23,13 @@ define([
 
     $.validator.setDefaults({
         errorPlacement: function(error, element) {
-            error.css({
-                    position: "absolute",
-                    "white-space": "nowrap",
-                    right: "10px",
-                    top: "0"
-                })
+            error
+                // .css({
+                //     position: "absolute",
+                //     "white-space": "nowrap",
+                //     right: "10px",
+                //     top: "0"
+                // })
                 .insertAfter(element);
         }
     });

@@ -64,7 +64,7 @@ define([
             }
         });
         $("#back").on("click", function() {
-            location.href = "../cont/activity.html";
+            location.href = "../activity.html";
         });
         $("#applyBtn").on("click", function() {
             if ($("#applyForm").valid()) {
@@ -73,7 +73,7 @@ define([
                 if (!userId) {
                     base.showMsg("登录超时，请重新登录");
                     setTimeout(function() {
-                        location.href = "../cont/activity.html";
+                        location.href = "../activity.html";
                     }, 2000);
                 } else {
                     $("#applyUser").val(userId);
@@ -165,7 +165,7 @@ define([
                 if (res.err_msg == "get_brand_wcpay_request:ok") { // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
                     base.showMsg("支付成功");
                     setTimeout(function() {
-                        location.href = "../cont/activity.html";
+                        location.href = "../activity.html";
                     }, 2000);
                 } else {
                     base.showMsg("支付失败");

@@ -18,7 +18,6 @@ define([
         }
     }
     var isEnd, canScrolling;
-    var contHeight = $(window).height() - 80;
     var activeIdx = base.getUrlParam("idx") || 0;
 
     init();
@@ -32,6 +31,7 @@ define([
         $("#pagination").on("click", "li", function() {
             var me = $(this),
                 index = me.index();
+            var favicon = __uri("../images/favicon.ico");
             me.siblings(".active").removeClass("active");
             me.addClass("active");
             if (index == 0) {
@@ -47,7 +47,7 @@ define([
                 $("#rightCont").html('<li class="loading"></li>');
                 getRightCont(true);
             }
-            var $iframe = $('<iframe src="/favicon.ico" style="visibility: hidden;"></iframe>');
+            var $iframe = $('<iframe src="'+favicon+'" style="visibility: hidden;"></iframe>');
             $iframe.on('load', function() {
                 setTimeout(function() {
                     $iframe.off('load').remove();
@@ -58,7 +58,7 @@ define([
             var code = "";
             if (code = $("#leftCode").val()) {
                 if (base.isLogin()) {
-                    location.href = "../pay/apply.html?code=" + code;
+                    location.href = "./pay/apply.html?code=" + code;
                 } else {
                     $("#loading").removeClass('hidden');
                     Ajax.get("806031", {
@@ -84,11 +84,10 @@ define([
         $("#rightCont").on("click", "li[data-code]", function() {
             var code = $(this).attr("data-code");
             if (code) {
-                location.href = "./wonderful-detail.html?code=" + code;
+                location.href = "./cont/wonderful-detail.html?code=" + code;
             }
         });
         $(window).on("scroll", function() {
-            var me = $(this);
             if (canScrolling && !isEnd && ($(document).height() - $(window).height() - 40 <= $(document).scrollTop())) {
                 canScrolling = false;
                 addLoading();
@@ -148,14 +147,43 @@ define([
     function addRightCont(data) {
         for (var i = 0, html = ""; i < data.length; i++) {
             data[i].pic = data[i].pic.split(/\|\|/)[0];
-            html += '<li data-code="' + data[i].code + '" class="p-r mb20 pt20">' +
-                '<img class="plr16 wp100 " src="' + data[i].pic + '">' +
+            html += '<li data-code="' + data[i].code + '" class="p-r mb20 mt20 hp327 over-hide">' +
+                '<img class="plr16 wp100 center-img" src="' + data[i].pic + '">' +
                 '<div class="wp100 pr52 pos">' +
                 '<div class="heading">' + data[i].title + '</div>' +
                 '</div>' +
                 '</li>';
         }
-        $("#rightCont").append(html);
+
+        var center = $(html);
+        var imgs = center.find("img");
+        for (var i = 0; i < imgs.length; i++) {
+            var img = imgs.eq(i);
+            if (img[0].complete) {
+                var width = img[0].width,
+                    height = img[0].height;
+                if (width > height) {
+                    img.addClass("hp100");
+                } else {
+                    img.addClass("wp100");
+                }
+                continue;
+            }
+            (function(img) {
+                img[0].onload = (function() {
+                    var width = this.width,
+                        height = this.height;
+                    if (width > height) {
+                        img.addClass("hp100");
+                    } else {
+                        img.addClass("wp100");
+                    }
+                });
+            })(img);
+        }
+
+
+        $("#rightCont").append(center);
     }
 
     function doLeftError(id) {

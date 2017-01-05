@@ -42,7 +42,7 @@ define([
 
     function addListener() {
         $("#back").on("click", function() {
-            location.href = "./activity.html?idx=1";
+            location.href = "../activity.html?idx=1";
         });
     }
 
