@@ -38,6 +38,8 @@
     padding: 8px 15px 0 15px;
     word-wrap: break-word;
     line-height: 17px;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 .foot {
@@ -64,7 +66,7 @@
 .heading {
     font-size: 14px;
     color: #ffffff;
-    line-height: 14px;
+    line-height: 18px;
     word-wrap: break-word;
     word-break: break-word;
 }
@@ -199,6 +201,7 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
+    border-radius: 0;
 }
 
 .loading {

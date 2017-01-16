@@ -41,6 +41,8 @@ define([
                 $("#leftCont").html('<div class="loading"></div>');
                 getLeftCont(true);
             } else {
+                isEnd = false;
+                canScrolling = false;
                 document.title = '往日精彩';
                 $("#leftWrap").hide();
                 $("#rightWrap").show();
@@ -131,7 +133,7 @@ define([
                     refresh && $("#rightCont").empty();
                     var data = res.data,
                         totalCount = data.totalCount,
-                        curList = data.list
+                        curList = data.list;
                     if (totalCount < config.rightConfig.limit || curList.length < config.rightConfig.limit) {
                         isEnd = true;
                     }

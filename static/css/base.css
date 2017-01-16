@@ -111,6 +111,7 @@ body {
     color: #000000;
     background-color: #ffffff;
     line-height: 150%;
+    min-height: 100%;
 }
 
 .clearfix:after {
@@ -192,7 +193,6 @@ h6 {
 
 img {
     border: none;
-    vertical-align: bottom;
 }
 
 
@@ -202,7 +202,6 @@ html,
 body {
     margin: 0px;
     overflow-y: auto;
-    height: 100%;
 }
 
 html {
